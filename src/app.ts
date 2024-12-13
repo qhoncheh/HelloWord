@@ -1,12 +1,46 @@
-const charactor = 'ghonche';
+// classes
+class Invoice {
+    // readonly client: string;
+    // private details: string;
+    // public amount: number;
 
-console.log(charactor)
+    constructor(
+    readonly client: string,
+    private details: string,
+    public amount: number
+    ){}
 
-const inputs = document.querySelectorAll('input')
+    format(){
+        return `${this.client} ows €${this.amount} for ${this.details}`
+    }
+}
 
-console.log(inputs)
+const invOne = new Invoice('ghonche', 'web Designer',2000);
+const invTwo = new Invoice('mario', 'UI/UX Designer',1000);
 
+let invoices : Invoice[] = [] ;
+invoices.push(invOne);
+invoices.push(invTwo);
 
-inputs.forEach(input => {
-    console.log(input);
-})
+invoices.forEach(inv => {
+    console.log(inv.client, inv.amount, inv.format());
+});
+
+const form = document.querySelector('.new-item-form') as HTMLFormElement;
+
+//inputs
+const type = document.querySelector('#type') as HTMLSelectElement;
+const tofrom = document.querySelector('#tofrom') as HTMLInputElement;
+const details = document.querySelector('#details') as HTMLInputElement;
+const amount = document.querySelector('#amount') as HTMLInputElement;
+
+form.addEventListener('submit', (e:Event) =>{
+    e.preventDefault();
+
+    console.log(
+        type.value,
+        tofrom.value,
+        details.value,
+        amount.valueAsNumber
+    )
+}) 
