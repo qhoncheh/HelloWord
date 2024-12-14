@@ -1,4 +1,4 @@
-typescript project
+typescript miniproject
 ✔
 
 about : Finance Logger
